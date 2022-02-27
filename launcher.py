@@ -7,7 +7,7 @@ from tkinter import messagebox
 import webbrowser
 import shutil
 
-app_VERSION = '1.1'
+app_VERSION = '1.0'
 
 application_get_url = "https://unerasable.github.io/application.json"
 
