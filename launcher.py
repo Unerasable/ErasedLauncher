@@ -1,5 +1,6 @@
 import os
 os.system("pip install requests")
+os.system("cls")
 import requests
 import tkinter
 from tkinter import *
@@ -7,7 +8,7 @@ from tkinter import messagebox
 import webbrowser
 import shutil
 
-app_VERSION = '1.0'
+app_VERSION = '1.1'
 
 application_get_url = "https://unerasable.github.io/application.json"
 
@@ -17,7 +18,7 @@ window.title("Erased Launcher")
 window.geometry("500x500")
 window.resizable(0, 0)
 
-window.configure(background='#000000')
+window.configure(background='#282c34')
 def check_valid_status_code(request):
     if request.status_code == 200:
         return request.json()
@@ -115,37 +116,37 @@ def download_ApplicationRPC():
 
 if checkAppVer == app_VERSION:
     # add a lable to the window
-    label = tkinter.Label(window, text="Erased Launcher is up to date", bg='#000000', fg='#00ff00')
+    label = tkinter.Label(window, text="Erased Launcher is up to date", bg='#282c34', fg='#00ff00')
     label.pack()
     # install Location
-    inst = tkinter.Label(window, text="Install Location", bg='#000000', fg='#00ff00')
+    inst = tkinter.Label(window, text="Install Location", bg='#282c34', fg='#00ff00')
     inst.pack()
     instLoc = tkinter.Entry(window)
     instLoc.pack()
     # add an empty label
-    empty = tkinter.Label(window, text="", bg='#000000', fg='#00ff00')
+    empty = tkinter.Label(window, text="", bg='#282c34', fg='#00ff00')
     empty.pack()
     # download button
-    downloadErasedRPG = tkinter.Button(window, text="Download Erased RPG",bg='#89CFF0', fg='#000000', command=lambda: download_ErasedRPG())
+    downloadErasedRPG = tkinter.Button(window, text="Download Erased RPG",bg='#a2a6c2', fg='#282c34', command=lambda: download_ErasedRPG())
     downloadErasedRPG.pack()
     # add a empty label
-    emptyLabel1 = tkinter.Label(window, text="", bg='#000000', fg='#00ff00')
+    emptyLabel1 = tkinter.Label(window, text="", bg='#282c34', fg='#00ff00')
     emptyLabel1.pack()
     # downloadProcastinatorMotivator
-    downloadProcastinatorMotivator = tkinter.Button(window, text="Download Procastinator Motivator",bg='#89CFF0', fg='#000000', command=lambda: download_ProcastinatorMotivator())
+    downloadProcastinatorMotivator = tkinter.Button(window, text="Download Procastinator Motivator",bg='#a2a6c2', fg='#282c34', command=lambda: download_ProcastinatorMotivator())
     downloadProcastinatorMotivator.pack()
     # add a empty label
-    emptyLabel = tkinter.Label(window, text="", bg='#000000', fg='#00ff00')
+    emptyLabel = tkinter.Label(window, text="", bg='#282c34', fg='#00ff00')
     emptyLabel.pack()
     # downloadApplicationRPC
-    downloadApplicationRPC = tkinter.Button(window, text="Download Application RPC",bg='#89CFF0', fg='#000000', command=lambda: download_ApplicationRPC())
+    downloadApplicationRPC = tkinter.Button(window, text="Download Application RPC",bg='#a2a6c2', fg='#282c34', command=lambda: download_ApplicationRPC())
     downloadApplicationRPC.pack()
 else:
     # add a lable to the window
-    label = tkinter.Label(window, text="Erased Launcher is outdated", bg='#000000', fg='#ff0000')
+    label = tkinter.Label(window, text="Erased Launcher is outdated", bg='#282c34', fg='#ff0000')
     label.pack()
     # add a button to the window
-    button = tkinter.Button(window, text="Update", bg='#000000', fg='#00ff00', command=lambda: webbrowser.open("http://github.com/Unerasable/ErasedLauncher"))
+    button = tkinter.Button(window, text="Update", bg='#282c34', fg='#00ff00', command=lambda: webbrowser.open("http://github.com/Unerasable/ErasedLauncher"))
     button.pack()
 
 
