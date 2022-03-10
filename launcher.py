@@ -8,7 +8,7 @@ from tkinter import messagebox
 import webbrowser
 import shutil
 
-app_VERSION = '1.1'
+app_VERSION = '1.2'
 
 application_get_url = "https://unerasable.github.io/application.json"
 
@@ -112,7 +112,31 @@ def download_ApplicationRPC():
         print(e)
         #message box to say that the application could not be downloaded
         messagebox.showerror("Application Download Error", f"The application could not be downloaded.\n{e}")
-
+def downloadNightcoreDownloader():
+    application_URL = f"{app_URL['nightcoreDownloader']['downloadURL']}"
+    application_NAME = f"{app_URL['nightcoreDownloader']['name']}"
+    install_Location = instLoc.get()
+    try:
+        
+        if install_Location == "":
+            install_Location = f"./{application_NAME}/"
+            os.mkdir(install_Location)
+        else:
+            install_Location = f"{install_Location}/{application_NAME}/"
+            os.mkdir(install_Location)
+    
+        r = requests.get(application_URL)
+        with open(f"{install_Location}{application_NAME}.exe",'wb') as f:
+            f.write(r.content)
+        original = f"{install_Location}{application_NAME}.exe"
+        target = f"C:/Users/{os.environ.get('USERNAME')}/Desktop/{application_NAME}.exe"
+        shutil.copyfile(original, target)
+        # add a message box to say that the application has been downloaded
+        messagebox.showinfo("Application Downloaded", "The application has been downloaded to the specified location")
+    except Exception as e:
+        print(e)
+        #message box to say that the application could not be downloaded
+        messagebox.showerror("Application Download Error", f"The application could not be downloaded.\n{e}")
 
 if checkAppVer == app_VERSION:
     # add a lable to the window
@@ -141,6 +165,10 @@ if checkAppVer == app_VERSION:
     # downloadApplicationRPC
     downloadApplicationRPC = tkinter.Button(window, text="Download Application RPC",bg='#a2a6c2', fg='#282c34', command=lambda: download_ApplicationRPC())
     downloadApplicationRPC.pack()
+    emptyLabel5 = tkinter.Label(window, text="", bg='#282c34', fg='#00ff00')
+    emptyLabel5.pack()
+    downloadNightcoreDownloader = tkinter.Button(window, text="Download NightcoreDownloader",bg='#a2a6c2', fg='#282c34', command=lambda: downloadNightcoreDownloader())
+    downloadNightcoreDownloader.pack()
 else:
     # add a lable to the window
     label = tkinter.Label(window, text="Erased Launcher is outdated", bg='#282c34', fg='#ff0000')
